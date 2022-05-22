@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ModifierHaieController!{% endblock %}
+
+{% block body %}
+{% block content %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    input::-webkit-inner-spin-button, input::-webkit-outer-spin-button { -webkit-appearance: none; margin:0; }
+</style>
+
+{% if lesHaies is not empty %}
+            <table>
+                <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>Nom</th>
+                    <th>Prix</th>  
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for haie in lesHaies %}
+                    <tr>
+                        <td>{{ haie.code }}</td>
+                        <td>{{ haie.nom }}</td>
+                        <td>{{ haie.prix }}</td>
+                        <td><a href="{{ path('modifier_haie', { 'id': haie.id }) }}">
+                            Consultation/Modification</a></td>
+                        
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>Aucune haie.</p>
+        {% endif %}
+
+{% endblock %}
+{% endblock %}

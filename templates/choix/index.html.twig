@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ChoixController!{% endblock %}
+
+{% block body %}
+{% block content %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+<form method="post" action="{{ path('mesure') }}" name="choix">
+<div class="choix">
+    <select id="selectClient" name = "selectClient"required>
+        <option disabled selected value>--Choisir le client--</option>
+        {% for client in clients %}
+            <option value = {{client.id}}>{{client.nom}} {{client.prenom}}</option>           
+        {% endfor %}
+    </select>
+</div>
+<input type="submit" name="confirmChoix" value="suite">
+<h3>Client introuvable ? <a href="{{ path('client_new') }}"> Le créer. </a></h3>
+</form>
+{% endblock %}
+{% endblock %}

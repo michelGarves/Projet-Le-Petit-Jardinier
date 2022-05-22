@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MesureController!{% endblock %}
+
+{% block body %}
+{% block content %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    input::-webkit-inner-spin-button, input::-webkit-outer-spin-button { -webkit-appearance: none; margin:0; }
+</style>
+{% if leClient.typeClient == "Particulier" %}
+    Vous êtes un particulier
+{% elseif leClient.typeClient == "Entreprise" %}
+    Vous êtes une entreprise (vous bénéficez de 10% de remise)
+{% endif %}</br>
+<!---
+<form method="post" id="infoHaie" action = "">
+    <select name="haie" id = "haie"required>
+        <option disabled selected value>--Choisir votre type de haie--</option>
+        {% for item in lesHaies%}
+            <option value={{item.getId()}}>{{item.getNom()}}</option>
+        {% endfor %}
+    </select></br>
+    Longueur (cm) : <input type="number" id="lon" name="longueur" required></br>
+    Hauteur (cm) : <input type="number" id = "hau" name="hauteur" required></br>
+    <select name="selectClient" hidden><option selected value = {{leClient.id}}>{{leClient.id}}</option></select>
+    <input type="button" name="ajout" value="Ajouter au devis" onClick="envoiForm('mesure')">
+    <input type="button" name="end" value="Finaliser le devis" onClick="envoiForm('devis')">
+</form>
+-->
+
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    
+    <button class="btn">{{ button_label|default('Ajouter au Devis') }}</button>
+
+{{ form_end(form) }}
+</br>
+<a href = "{{path('devis', {'idDevis' : idDevis}) }}"><button class="btn"> Visualiser le devis final </button></a>
+{% endblock %}
+{% endblock %}

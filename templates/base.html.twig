@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {# Run `composer require symfony/webpack-encore-bundle`
+           and uncomment the following Encore helpers to start using Symfony UX #}
+        {% block stylesheets %}
+            {#{{ encore_entry_link_tags('app') }}#}
+        {% endblock %}
+ 
+        {% block javascripts %}
+            {#{{ encore_entry_script_tags('app') }}#}
+        {% endblock %}
+    </head>
+    <body>
+        <ul>
+            <li><a href="{{ path('accueil') }}">Accueil</a></li>
+            <li>Devis
+                <ul>
+                    <li><a href="{{ path('choix') }}">Faire un devis en ligne</a></li>
+                </ul>
+            </li>
+            <li>Gestion des types de haies
+                <ul>
+                    <li><a href="{{ path('creer_haie') }}">Création</a></li>
+                    <li><a href="{{ path('liste_haie') }}">Consultation/Modification</a></li>
+                </ul>
+            </li>
+            <li>Client
+                <ul>
+                    <li><a href="{{ path('client_index') }}">Gestion des clients</a></li>
+                </ul>
+            </li>
+        </ul>
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>
